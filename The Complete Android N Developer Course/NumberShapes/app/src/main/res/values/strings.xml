@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Number Shapes</string>
+    <string name="app_instructions">Enter a number below to find if it is a triangular number, square number, or both!</string>
+    <string name="app_button">Test number</string>
 </resources>

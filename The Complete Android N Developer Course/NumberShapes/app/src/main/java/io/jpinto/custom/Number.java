@@ -9,19 +9,32 @@ public class Number {
     private double mNumber;
 
     public Number(double number) {
-        mNumber = number;
+        mNumber = number < 0 ? 0 : number;
     }
 
-    public boolean isPositiveInteger() {
-        if (mNumber > 0) {
-            double sqrResult = Math.sqrt(mNumber);
+    private boolean isSquare(double number) {
+        if (number > 0) {
+            double sqrResult = Math.sqrt(number);
             return (sqrResult % 1) == 0;
         } else {
             return false;
         }
     }
 
-    public boolean isTriangularNumber() {
-        return false;
+    public boolean isSquare() {
+        return isSquare(mNumber);
+    }
+
+    public boolean isTriangular() {
+        if (mNumber > 0) {
+            double result = 8*mNumber + 1;
+            return isSquare(result);
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isSquareAndTriangular() {
+        return (isTriangular() && isSquare());
     }
 }
