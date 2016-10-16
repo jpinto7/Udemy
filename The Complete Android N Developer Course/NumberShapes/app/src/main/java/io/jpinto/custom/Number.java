@@ -1,18 +1,19 @@
 package io.jpinto.custom;
 
 /**
- * Created by Juan Pablo on 14/10/2016.
+ * Author: Juan Pablo
+ * Date: 14/10/2016
  */
 
 public class Number {
 
-    private double mNumber;
+    private int mNumber;
 
-    public Number(double number) {
+    public Number(int number) {
         mNumber = number < 0 ? 0 : number;
     }
 
-    private boolean isSquare(double number) {
+    private boolean isSquare(int number) {
         if (number > 0) {
             double sqrResult = Math.sqrt(number);
             return (sqrResult % 1) == 0;
@@ -27,7 +28,7 @@ public class Number {
 
     public boolean isTriangular() {
         if (mNumber > 0) {
-            double result = 8*mNumber + 1;
+            int result = 8*mNumber + 1;
             return isSquare(result);
         } else {
             return false;
