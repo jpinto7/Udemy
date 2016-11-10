@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Connect 3</string>
+    <string name="restart_button_text">Restart</string>
+    <string name="tie_message_text">It\'s a tie!</string>
+</resources>
