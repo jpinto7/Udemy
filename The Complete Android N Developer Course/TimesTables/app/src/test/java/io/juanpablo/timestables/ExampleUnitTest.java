@@ -1,4 +1,4 @@
-package io.jpinto.timestables;
+package io.juanpablo.timestables;
 
 import org.junit.Test;
 
