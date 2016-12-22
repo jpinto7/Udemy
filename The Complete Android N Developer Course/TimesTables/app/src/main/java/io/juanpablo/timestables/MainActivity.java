@@ -2,6 +2,7 @@ package io.juanpablo.timestables;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SeekBar;
 
@@ -9,8 +10,20 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    SeekBar mSeekBar;
-    ListView mListView;
+    private SeekBar mSeekBar;
+    private ListView mListView;
+    private static final int TIMES_TABLES_LIMIT = 10;
+
+    private void setTimesTable(int timesTable) {
+        ArrayList<String> timesTableContent = new ArrayList<>();
+
+        for (int i = 1; i <= TIMES_TABLES_LIMIT; i++) {
+            timesTableContent.add(String.valueOf(i * timesTable));
+        }
+
+        ArrayAdapter<String> timesTableAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, timesTableContent);
+        mListView.setAdapter(timesTableAdapter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     timesTable = progress;
                 }
+                setTimesTable(timesTable);
             }
 
             @Override
@@ -47,10 +61,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        int timesTable = 10;
-
-        ArrayList<String> timesTableContent = new ArrayList<>();
-
-
+        setTimesTable(10);
     }
 }
