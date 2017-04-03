@@ -1,10 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import { Link } from 'react-router';
 
 class SongsList extends Component {
+  static propTypes = {
+    data: PropTypes.shape({
+      loading: PropTypes.bool.isRequired,
+      songs: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      })),
+    }).isRequired,
+  }
+
   renderSongs() {
-    console.log(this);
     const { songs } = this.props.data;
     return songs.map(song => (
       <li
@@ -22,9 +31,17 @@ class SongsList extends Component {
       return <div>Loading...</div>;
     }
     return (
-      <ul>
-        {this.renderSongs()}
-      </ul>
+      <div>
+        <ul className="collection">
+          {this.renderSongs()}
+        </ul>
+        <Link
+          to="/songs/new"
+          className="btn-floating btn-large red right"
+        >
+          <i className="material-icons">add</i>
+        </Link>
+      </div>
     );
   }
 }
