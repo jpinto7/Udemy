@@ -1,6 +1,4 @@
-import mongoose from 'mongoose';
-
-const Schema = mongoose.Schema;
+import mongoose, { Schema } from 'mongoose';
 
 const LyricSchema = new Schema({
   song: {
@@ -11,14 +9,13 @@ const LyricSchema = new Schema({
   content: { type: String },
 });
 
-LyricSchema.statics.like = (id) => {
+LyricSchema.statics.like = function (id) {
   const Lyric = mongoose.model('lyric');
-
   return Lyric.findById(id)
-    .then((lyric) => {
-      lyric.likes += 1;
-      return lyric.save();
-    });
+   .then((lyric) => {
+     lyric.likes += 1;
+     return lyric.save();
+   });
 };
 
 export default LyricSchema;

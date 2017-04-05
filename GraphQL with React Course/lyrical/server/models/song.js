@@ -1,6 +1,4 @@
-import mongoose from 'mongoose';
-
-const Schema = mongoose.Schema;
+import mongoose, { Schema } from 'mongoose';
 
 const SongSchema = new Schema({
   title: { type: String },
@@ -14,9 +12,8 @@ const SongSchema = new Schema({
   }],
 });
 
-SongSchema.statics.addLyric = (id, content) => {
+SongSchema.statics.addLyric = function (id, content) {
   const Lyric = mongoose.model('lyric');
-
   return this.findById(id)
     .then((song) => {
       const lyric = new Lyric({ content, song });
@@ -26,10 +23,10 @@ SongSchema.statics.addLyric = (id, content) => {
     });
 };
 
-SongSchema.statics.findLyrics = id => (
-  this.findById(id)
+SongSchema.statics.findLyrics = function (id) {
+  return this.findById(id)
     .populate('lyrics')
-    .then(song => song.lyrics)
-);
+    .then(song => song.lyrics);
+};
 
 export default SongSchema;

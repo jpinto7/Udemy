@@ -12,6 +12,7 @@ const SongItem = styled.li`
 
 const DeleteIcon = styled.i`
   cursor: pointer;
+  margin-right: 5px;  
 `;
 
 class SongsList extends Component {
@@ -43,7 +44,9 @@ class SongsList extends Component {
         key={id}
         className="collection-item"
       >
-        {title}
+        <Link to={`/songs/${id}`}>
+          {title}
+        </Link>
         <DeleteIcon
           className="material-icons"
           onClick={this.onSongDelete(id)}
