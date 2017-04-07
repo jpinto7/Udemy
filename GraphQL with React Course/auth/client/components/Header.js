@@ -25,7 +25,7 @@ class Header extends Component {
   renderButtons = () => {
     const { loading, user } = this.props.data;
     if (loading) {
-      return <div />;
+      return null;
     }
     if (user) {
       return (
@@ -39,7 +39,7 @@ class Header extends Component {
     return (
       <div>
         <li>
-          <Link to="/signup">Signup</Link>
+          <Link to="/signup">Sign Up</Link>
         </li>
         <li>
           <Link to="/login">Login</Link>

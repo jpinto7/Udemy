@@ -2,14 +2,14 @@ import React, { Component, PropTypes } from 'react';
 import { graphql } from 'react-apollo';
 import { hashHistory } from 'react-router';
 import query from '../queries/CurrentUser';
-import mutation from '../mutations/Login';
+import mutation from '../mutations/Signup';
 import AuthForm from './AuthForm';
 
-class LoginForm extends Component {
+class SignupForm extends Component {
   static propTypes = {
     data: PropTypes.shape({
       user: PropTypes.shape({
-        email: PropTypes.string.isRequired,
+        email: PropTypes.string,
       }),
     }).isRequired,
     mutate: PropTypes.func.isRequired,
@@ -48,7 +48,7 @@ class LoginForm extends Component {
   render() {
     return (
       <div>
-        <h3>Login</h3>
+        <h3>Sign Up</h3>
         <AuthForm
           errors={this.state.errors}
           onSubmit={this.handleOnSubmit}
@@ -59,5 +59,5 @@ class LoginForm extends Component {
 }
 
 export default graphql(query)(
-  graphql(mutation)(LoginForm),
+  graphql(mutation)(SignupForm),
 );

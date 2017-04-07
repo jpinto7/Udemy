@@ -1,7 +1,15 @@
 import React, { Component, PropTypes } from 'react';
+import styled from 'styled-components';
+
+const Errors = styled.div`
+  color: red;
+`;
 
 class AuthForm extends Component {
   static propTypes = {
+    errors: PropTypes.arrayOf(PropTypes.shape({
+      message: PropTypes.string.isRequired,
+    })).isRequired,
     onSubmit: PropTypes.func.isRequired,
   }
 
@@ -37,6 +45,11 @@ class AuthForm extends Component {
     });
   }
 
+  renderErrorMessages = () => {
+    const { errors } = this.props;
+    return errors.map(error => <div key={error}>{error}</div>);
+  }
+
   render() {
     return (
       <div className="row">
@@ -62,6 +75,9 @@ class AuthForm extends Component {
               onChange={this.handleInputChange}
             />
           </div>
+          <Errors>
+            {this.renderErrorMessages()}
+          </Errors>
           <button
             className="btn"
             type="submit"
