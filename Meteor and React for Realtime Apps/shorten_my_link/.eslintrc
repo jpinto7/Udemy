@@ -1,0 +1,11 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "@meteorjs/eslint-config-meteor"
+  ],
+  "env": {
+    "meteor": true,
+    "browser": true,
+    "node": true
+  }
+}
