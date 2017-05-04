@@ -1,3 +1,7 @@
 <h1>Server works!</h1>
 <p>{{ serverStatus }}</p>
-<button (click)="addServer()" class="btn btn-primary">Add server</button>
+<input type="text" class="form-control" [(ngModel)]="serverName" />
+<p>
+  {{serverName}}
+</p>
+<button (click)="addServer()" [disabled]="allowNewServers()" class="btn btn-primary">Add server</button>

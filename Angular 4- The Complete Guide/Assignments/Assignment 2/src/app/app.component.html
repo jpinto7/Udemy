@@ -1,0 +1,6 @@
+<div class="container">
+  <h1>Two Way Binding</h1>
+  <input type="text" placeholder="Enter your name" class="form-control" [(ngModel)]="username" />
+  <p>{{ username }}</p>
+  <button (click)="resetUsername()" class="btn btn-default" [disabled]="username === ''">Click me</button>
+</div>

@@ -1,0 +1,7 @@
+<div class="container">
+  <button class="btn btn-primary" (click)="displayDetails()">Display Details</button>
+  <p *ngIf="showParagraph">Surprise Text</p>
+  <p *ngFor="let buttonClick of buttonClicks; let i = index" [ngStyle]="applyBlueBackground(i)" [ngClass]="{ 'white-color': applyWhiteColor(i) }">
+    {{ buttonClick }}
+  </p>
+</div>
