@@ -1,10 +1,10 @@
-import { MyFirstAppPage } from './app.po';
+import { CourseProjectAppPage } from './app.po';
 
-describe('my-first-app App', () => {
-  let page: MyFirstAppPage;
+describe('course-project-app App', () => {
+  let page: CourseProjectAppPage;
 
   beforeEach(() => {
-    page = new MyFirstAppPage();
+    page = new CourseProjectAppPage();
   });
 
   it('should display message saying app works', () => {
