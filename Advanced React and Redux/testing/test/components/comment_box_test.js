@@ -1,5 +1,6 @@
 import { renderComponent, expect } from '../test_helper';
 import CommentBox from '../../src/components/CommentBox';
+import CommentList from '../../src/components/CommentList';
 
 describe('CommentBox', () => {
   let component;
@@ -21,19 +22,21 @@ describe('CommentBox', () => {
   });
 
   describe('entering some text', () => {
-    let inputText;
+    let comment;
+
     beforeEach(() => {
-      inputText = 'new comment';
-      component.find('textarea').simulate('change', inputText);
+      comment = 'new comment';
+      component.find('textarea').simulate('change', comment);
     });
 
     it('shows that text in the textarea', () => {
-      expect(component.find('textarea')).to.have.value(inputText);
+      expect(component.find('textarea')).to.have.value(comment);
     });
 
     it('when submitted, clears the input', () => {
       component.simulate('submit');
       expect(component.find('textarea')).to.have.value('');
     });
+
   });
 });
