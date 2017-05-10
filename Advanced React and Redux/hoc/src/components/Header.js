@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 class Header extends Component {
   authButton() {
-    return <a href="#">Sign in</a>
+    return <button>Sign in</button>
   }
 
   render() {
@@ -16,7 +16,7 @@ class Header extends Component {
           <li className="nav-item">
             <Link to="/resources">Resources</Link>
           </li>
-          <li className="nav-item">
+          <li className="nav-item nav-item-button">
             {this.authButton()}
           </li>
         </ul>

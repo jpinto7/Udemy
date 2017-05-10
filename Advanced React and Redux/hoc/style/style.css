@@ -1,1 +1,12 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+@media (min-width: 768px) {
+  .navbar-nav > li.nav-item-button {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+.navbar-nav > li.nav-item-button {
+  padding: 10px 13px;
+}
