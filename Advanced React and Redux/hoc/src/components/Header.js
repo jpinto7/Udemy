@@ -11,7 +11,7 @@ class Header extends Component {
       <nav className="navbar navbar-light">
         <ul className="nav navbar-nav">
           <li className="nav-item">
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li className="nav-item">
             <Link to="/resources">Resources</Link>
