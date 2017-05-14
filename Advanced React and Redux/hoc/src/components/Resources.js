@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import requireAuthentication from './requireAuthentication';
 
 class Resources extends Component {
+  static propTypes = {
+    authenticated: PropTypes.bool.isRequired,
+    push: PropTypes.func.isRequired,
+  }
+
+  componentWillUpdate(newProps) {
+    const { authenticated } = this.props;
+    if (authenticated && !newProps.authenticated) {
+      this.props.push('/');
+    }
+  }
+
   render() {
     return (
       <div>
