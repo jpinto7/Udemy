@@ -1,11 +1,13 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: [
-    './src/index.js'
+    './src/index.js',
   ],
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     loaders: [
@@ -25,11 +27,17 @@ module.exports = {
           limit: 100000,
         },
       },
-    ]
+    ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    }),
+  ],
   devServer: {
     historyApiFallback: true,
     inline: true,
-    contentBase: './'
-  }
+    contentBase: './',
+    open: true,
+  },
 };
