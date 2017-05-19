@@ -1,12 +1,10 @@
-@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
-@media (min-width: 768px) {
-  .navbar-nav > li.nav-item-button {
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
+.user-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.navbar-nav > li.nav-item-button {
-  padding: 12px 14px;
+.card {
+  width: 30%;
+  min-width: 300px;
 }
