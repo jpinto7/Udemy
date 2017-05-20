@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
+import asyncMiddleWare from '../middlewares/async';
 
 import rootReducer from '../reducers';
 
@@ -10,6 +11,7 @@ const configureStore = (initialState = {}, history) => {
   ];
 
   const devMiddlewares = [
+    asyncMiddleWare,
     reduxImmutableStateInvariant(),
     ...prodMiddlewares,
   ];

@@ -1,11 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router';
 import UsersList from './UsersList';
 
 const Home = () => (
-  <div>
-    I'm home
-    <UsersList />
-  </div>
+  <UsersList />
 );
 
 export default Home;
