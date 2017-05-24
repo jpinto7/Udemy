@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -18,7 +19,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: ['style', 'css'],
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,
@@ -33,6 +34,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
+    new ExtractTextPlugin('styles.css'),
   ],
   devServer: {
     port: 4000,
