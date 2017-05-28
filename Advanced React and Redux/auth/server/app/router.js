@@ -10,7 +10,7 @@ const requireSignin = passport.authenticate('local', { session: false });
 
 const router = (app) => {
   app.get('/', requireAuth, (req, res) => {
-    res.send({ message: 'hello there!' });
+    res.send({ message: 'Super secret code is ABC123' });
   });
   app.post('/signin', requireSignin, signin);
   app.post('/signup', signup);

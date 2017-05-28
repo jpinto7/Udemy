@@ -3,17 +3,19 @@ import PropTypes from 'prop-types';
 
 import Header from './Header';
 
-const App = ({ children }) => (
-  <div>
-    <Header />
-    <div className="container">
-      {children}      
+const App = ({ children }) => {
+  return (
+    <div>
+      <Header />
+      <div className="container">
+        {children}
+      </div>
     </div>
-  </div>
-);
+  )
+};
 
 App.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.element.isRequired,
 };
 
 export default App;

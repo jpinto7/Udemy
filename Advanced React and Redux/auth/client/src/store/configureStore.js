@@ -1,17 +1,18 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
+import { createEpicMiddleware } from 'redux-observable';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
-import asyncMiddleWare from '../middlewares/async';
 
 import rootReducer from '../reducers';
+import rootEpic from '../epics';
 
 const configureStore = (initialState = {}, history) => {
   const prodMiddlewares = [
     routerMiddleware(history),
+    createEpicMiddleware(rootEpic),
   ];
 
   const devMiddlewares = [
-    asyncMiddleWare,
     reduxImmutableStateInvariant(),
     ...prodMiddlewares,
   ];

@@ -1,11 +1,25 @@
 import App from './components/App';
-import Home from './components/Home';
 
 export default {
   component: App,
   name: 'app',
   path: '/',
   indexRoute: {
-    component: Home
+    getComponent(location, cb) {
+      require.ensure([], () => {
+        cb(null, require('./components/Home').default);
+      });
+    },
   },
+  childRoutes: [
+    {
+      path: 'signin',
+      name: 'signin',
+      getComponent(location, cb) {
+        require.ensure([], () => {
+          cb(null, require('./components/auth/SignIn').default);
+        });
+      },
+    },
+  ],
 };
