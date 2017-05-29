@@ -8,6 +8,17 @@ class SignIn extends Component {
     this.props.signInUser({ email, password });
   }
 
+  renderAlert() {
+    const { errorMessage } = this.props;
+    if (errorMessage) {
+      return (
+        <div className="alert alert-danger">
+          <strong>Oops!</strong> {errorMessage}
+        </div>
+      );
+    }
+  }
+
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -37,6 +48,7 @@ class SignIn extends Component {
             id="password"
           />
         </fieldset>
+        {this.renderAlert()}
         <button
           type="submit"
           className="btn btn-primary"
@@ -52,6 +64,10 @@ const mapDispatchToProps = {
   signInUser,
 };
 
-export default connect(null, mapDispatchToProps)(reduxForm({
+const mapStateToProps = ({ auth: { error }}) => ({
+  errorMessage: error,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
   form: 'signin',
 })(SignIn));

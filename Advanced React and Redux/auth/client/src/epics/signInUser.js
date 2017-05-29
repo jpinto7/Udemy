@@ -1,5 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { ajax } from 'rxjs/observable/dom/ajax';
+import { push } from 'react-router-redux';
 import {
   signInUserFailure,
   signInUserSuccess,
@@ -14,7 +15,13 @@ const signInUser = action$ =>
         password,
       }, { 'Content-Type': 'application/json' })
       .map(e => e.response)
-      .map(response => signInUserSuccess(response))
+      .mergeMap(({ token }) => {
+        localStorage.setItem('token', token);
+        return [
+          signInUserSuccess(),
+          push('/'),
+        ];
+      })
       .catch(({ message }) => Observable.of(signInUserFailure(message)))
     );
 

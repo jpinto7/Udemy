@@ -21,5 +21,14 @@ export default {
         });
       },
     },
+    {
+      path: 'signout',
+      name: 'signout',
+      getComponent(location, cb) {
+        require.ensure([], () => {
+          cb(null, require('./components/auth/SignOut').default);
+        });
+      },
+    },
   ],
 };
