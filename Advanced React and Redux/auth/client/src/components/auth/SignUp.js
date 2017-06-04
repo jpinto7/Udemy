@@ -2,31 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import AuthForm from './AuthForm';
-import { signInUser } from '../../actions';
-import { signInFormValidation as validate } from './validate';
+import { signUpUser } from '../../actions';
+import { signUpFormValidation as validate } from './validate';
 
-const SignIn = (props) => {
+const SignUp = (props) => {
   const {
     errorMessage,
-    signInUser: handleSignInUser,
+    signUpUser: handleSignUpUser,
     handleSubmit,
     pristine,
     dirty,
    } = props;
   return (
     <AuthForm
-      type="signIn"
+      type="signUp"
       dirty={dirty}
       pristine={pristine}
       errorMessage={errorMessage}
-      onSubmit={handleSubmit(handleSignInUser)}
-      submitButtonText="Sign in"
+      onSubmit={handleSubmit(handleSignUpUser)}
+      submitButtonText="Sign up"
     />
   );
 }
 
 const mapDispatchToProps = {
-  signInUser,
+  signUpUser,
 };
 
 const mapStateToProps = ({ auth: { error }}) => ({
@@ -34,6 +34,6 @@ const mapStateToProps = ({ auth: { error }}) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
-  form: 'signin',
+  form: 'signup',
   validate,
-})(SignIn));
+})(SignUp));

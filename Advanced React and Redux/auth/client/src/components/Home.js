@@ -1,10 +1,7 @@
 import React from 'react';
 
 const Home = () => (
-  <div>
-    Home
-    oeskeokose
-  </div>
+  <div>Home</div>
 );
 
 export default Home;

@@ -1,4 +1,5 @@
 import App from './components/App';
+import requireAuth from './components/auth/requireAuth';
 
 export default {
   component: App,
@@ -18,6 +19,24 @@ export default {
       getComponent(location, cb) {
         require.ensure([], () => {
           cb(null, require('./components/auth/SignIn').default);
+        });
+      },
+    },
+    {
+      path: 'signup',
+      name: 'signup',
+      getComponent(location, cb) {
+        require.ensure([], () => {
+          cb(null, require('./components/auth/SignUp').default);
+        });
+      },
+    },
+    {
+      path: 'feature',
+      name: 'feature',
+      getComponent(location, cb) {
+        require.ensure([], () => {
+          cb(null, requireAuth(require('./components/Feature').default));
         });
       },
     },

@@ -36,6 +36,7 @@
   "dependencies": {
     "babel-preset-stage-1": "6.1.18",
     "bootstrap": "4.0.0-alpha.6",
+    "classnames": "^2.2.5",
     "immutability-helper": "2.2.0",
     "lodash": "3.10.1",
     "react": "15.4.2",

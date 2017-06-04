@@ -1,10 +1,10 @@
 import { combineEpics } from 'redux-observable';
-import signInUser from './signInUser';
-import signOutUser from './signOutUser';
+import authEpics from './auth';
+import featureEpics from './feature';
 
 const rootEpic = combineEpics(
-  signInUser,
-  signOutUser,
+  authEpics,
+  featureEpics,
 );
 
 export default rootEpic;

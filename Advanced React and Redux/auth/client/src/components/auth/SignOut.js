@@ -4,7 +4,7 @@ import { signOutUser } from '../../actions';
 
 class SignOut extends Component {
   componentWillMount() {
-    this.props.signOutUser();
+    setTimeout(this.props.signOutUser, 1000);
   }
 
   render() {
