@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Audio_Player" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="6GL-bU-EJ0">
+                                <rect key="frame" x="171.5" y="278.5" width="32" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frd-C2-hR1">
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="30"/>
+                                        <state key="normal" title="Play"/>
+                                        <connections>
+                                            <action selector="onPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FYh-lP-aa2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAP-ph-sKy">
+                                        <rect key="frame" x="0.0" y="80" width="32" height="30"/>
+                                        <state key="normal" title="Stop"/>
+                                        <connections>
+                                            <action selector="onStop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ADJ-Cg-31d"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="OEw-rZ-KXd">
+                                <rect key="frame" x="35.5" y="216" width="304" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="zqR-fo-gjn"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderMoved:" destination="BYZ-38-t0r" eventType="valueChanged" id="MMX-h4-HjP"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6GL-bU-EJ0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0Tm-8M-iUV"/>
+                            <constraint firstItem="OEw-rZ-KXd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CHW-g8-rMw"/>
+                            <constraint firstItem="frd-C2-hR1" firstAttribute="top" secondItem="OEw-rZ-KXd" secondAttribute="bottom" constant="31.5" id="HCG-5A-gKY"/>
+                            <constraint firstItem="6GL-bU-EJ0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tTl-3r-ZCZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playButton" destination="frd-C2-hR1" id="A2W-QR-rWe"/>
+                        <outlet property="slider" destination="OEw-rZ-KXd" id="s7A-MQ-EAx"/>
+                        <outlet property="stopButton" destination="fAP-ph-sKy" id="u7p-NL-2ob"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="64.31784107946028"/>
+        </scene>
+    </scenes>
+</document>
