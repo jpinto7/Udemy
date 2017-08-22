@@ -1,0 +1,6 @@
+framework module Render {
+  umbrella header "Render-umbrella.h"
+
+  export *
+  module * { export * }
+}

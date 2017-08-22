@@ -1,0 +1,15 @@
+PODS:
+  - Render (4.9)
+  - ReSwift (4.0.0)
+
+DEPENDENCIES:
+  - Render
+  - ReSwift
+
+SPEC CHECKSUMS:
+  Render: ec3e12861986531a2b043b28b8bee576e3909f4b
+  ReSwift: f058ef13b46ae5f463f10605ccbbb7fb04424d8d
+
+PODFILE CHECKSUM: 9d4a7110b715e36ef588490c28da376e8925b4a8
+
+COCOAPODS: 1.3.1
