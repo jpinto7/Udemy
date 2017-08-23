@@ -7,8 +7,7 @@ import RecipeService from './recipes/recipe.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   providers: [
-    RecipeService,
-    ShoppingListService
+    RecipeService
   ]
 })
 export class AppComponent {
