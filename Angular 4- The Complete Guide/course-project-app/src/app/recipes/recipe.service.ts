@@ -1,13 +1,14 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import Recipe from './recipe.model';
 import Ingredient from '../shared/ingredient.model';
-import ShoppingListService from '../shopping-list/shopping-list.service';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
-export default class RecipeService {
+export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
   private recipes: Recipe[] = [
     new Recipe(
+      1,
       'A test recipe',
       'Simply a test',
       'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
@@ -17,6 +18,7 @@ export default class RecipeService {
       ]
     ),
     new Recipe(
+      2,
       'Another test recipe',
       'Simply a test',
       'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
@@ -31,6 +33,10 @@ export default class RecipeService {
 
   getRecipes() {
     return [...this.recipes];
+  }
+
+  getRecipe(id: number): Recipe {
+    return this.recipes.find((recipe: Recipe) => recipe.id === id);
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {

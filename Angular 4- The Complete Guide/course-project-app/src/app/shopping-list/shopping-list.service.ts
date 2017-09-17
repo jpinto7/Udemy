@@ -1,7 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import Ingredient from '../shared/ingredient.model';
 
-export default class ShoppingListService {
+export class ShoppingListService {
   ingredientsChanged = new EventEmitter<Ingredient[]>();
   private ingredients: Ingredient[] = [
     new Ingredient('Lettuce', 5)
