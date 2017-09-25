@@ -1,0 +1,16 @@
+{
+  "name": "firebase-auth",
+  "version": "0.0.0",
+  "description": "Hello Expo!",
+  "author": null,
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "dependencies": {
+    "axios": "0.16.2",
+    "expo": "^20.0.0",
+    "firebase": "^4.4.0",
+    "react": "16.0.0-alpha.12",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-20.0.0.tar.gz",
+    "react-native-elements": "0.16.0"
+  }
+}
