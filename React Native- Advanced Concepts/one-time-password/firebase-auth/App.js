@@ -15,14 +15,7 @@ const styles = StyleSheet.create({
 
 class App extends Component {
   componentDidMount() {
-    const config = {
-      apiKey: "AIzaSyCMkN1HqtKtSsqB34qHIH2P2e9jmiQKU6s",
-      authDomain: "one-time-password-f4485.firebaseapp.com",
-      databaseURL: "https://one-time-password-f4485.firebaseio.com",
-      projectId: "one-time-password-f4485",
-      storageBucket: "one-time-password-f4485.appspot.com",
-      messagingSenderId: "192690918057"
-    };
+    const config = {};
     firebase.initializeApp(config);
   }
 
