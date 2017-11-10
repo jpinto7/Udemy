@@ -19,6 +19,10 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
+import { DataStorageService } from './shared/data-storage.service';
+
+import 'rxjs/add/operator/map';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +44,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [RecipeService, ShoppingListService],
+  providers: [DataStorageService, RecipeService, ShoppingListService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
