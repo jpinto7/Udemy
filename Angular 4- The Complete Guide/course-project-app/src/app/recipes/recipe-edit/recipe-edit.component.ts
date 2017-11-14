@@ -56,11 +56,11 @@ export class RecipeEditComponent implements OnInit {
     });
   }
 
-  private onCancel() {
+  onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
 
-  private onSubmit() {
+  onSubmit() {
     if (this.editMode) {
       this.recipeService.updateRecipe(this.id, this.recipeForm.value);
     } else {
@@ -73,7 +73,7 @@ export class RecipeEditComponent implements OnInit {
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
   }
 
-  private onAddIngredient() {
+  onAddIngredient() {
     (<FormArray>this.recipeForm.get('ingredients')).push(new FormGroup({
       'name': new FormControl(null, Validators.required),
       'amount': new FormControl(null, [

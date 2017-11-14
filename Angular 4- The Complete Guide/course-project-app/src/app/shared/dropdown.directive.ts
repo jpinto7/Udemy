@@ -8,7 +8,7 @@ import {
   selector: '[appDropdown]'
 })
 export class DropdownDirective {
-  @HostBinding('class.open') isOpen: boolean = false;
+  @HostBinding('class.open') isOpen = false;
 
   constructor() {}
 
