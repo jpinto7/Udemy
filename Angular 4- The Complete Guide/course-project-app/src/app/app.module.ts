@@ -32,7 +32,7 @@ import 'rxjs/add/observable/fromPromise';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'course-project' }),
     HttpClientModule,
     AuthModule,
     AppRoutingModule,
@@ -40,9 +40,7 @@ import 'rxjs/add/observable/fromPromise';
     ShoppingListModule,
     CoreModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([
-      AuthEffects
-    ]),
+    EffectsModule.forRoot([AuthEffects]),
     StoreRouterConnectingModule,
     environment.production ? [] : StoreDevtoolsModule.instrument()
   ],
