@@ -62,22 +62,21 @@ class Slides extends Component {
   render() {
     const { data } = this.props;
     return (
-      <View style={{ flex: 1 }}>
-        <ScrollView
-          horizontal
-          pagingEnabled
-        >
-          {data.map(({ color = '',text = '' } = {}, index) => (
-            <View
-              key={index}
-              style={[styles.slide, { backgroundColor: color }]}
-            >
-              <Text style={styles.slideText}>{text}</Text>
-              {this.renderButton(index)}
-            </View>
-          ))}
-        </ScrollView>
-      </View>
+      <ScrollView
+        horizontal
+        pagingEnabled
+        style={{ flex: 1 }}
+      >
+        {data.map(({ color = '',text = '' } = {}, index) => (
+          <View
+            key={index}
+            style={[styles.slide, { backgroundColor: color }]}
+          >
+            <Text style={styles.slideText}>{text}</Text>
+            {this.renderButton(index)}
+          </View>
+        ))}
+      </ScrollView>
     );
   }
 }

@@ -34,6 +34,11 @@ const MainNavigator = TabNavigator({
       }
     })
   }
+}, {
+  lazy: true,
+  navigationOptions: {
+    tabBarVisible: false
+  },
 });
 
 class App extends Component {
@@ -42,7 +47,7 @@ class App extends Component {
       <Provider store={store}>
         <View style={styles.container}>
           <MainNavigator />
-        </View>        
+        </View>
       </Provider>
     );
   }
