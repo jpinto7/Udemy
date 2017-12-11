@@ -40,3 +40,7 @@ export const likeJob = job => ({
   type: types.LIKE_JOB,
   payload: job
 });
+
+export const clearLikedJobs = () => ({
+  type: types.CLEAR_LIKED_JOBS,
+});

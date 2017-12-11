@@ -32,4 +32,4 @@ const doFacebookLogin = async dispatch => {
     type: types.FB_LOGIN_SUCCESS,
     payload: token
   });
-}
+};

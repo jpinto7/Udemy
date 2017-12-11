@@ -23,11 +23,7 @@ const styles = {
 
 class Swipe extends Component {
   static propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      text: PropTypes.string.isRequired,
-      uri: PropTypes.string.isRequired,
-    })).isRequired,
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
     keyProp: PropTypes.string,
     onSwipeLeft: PropTypes.func,
     onSwipeRight: PropTypes.func,
@@ -160,7 +156,7 @@ class Swipe extends Component {
     }
     return (
       <Animated.View
-        key={item.id}
+        key={item[keyProp]}
         style={[styles.cardStyle, { top: 10 * (index - this.state.index), zIndex: -index }]}
       >
         {renderCard(item)}

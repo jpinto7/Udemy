@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
-import { View, Text, Platform } from 'react-native';
-import { Button } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { ScrollView, View, Text, Platform, Linking } from 'react-native';
+import { Card, Button, Icon } from 'react-native-elements';
+import { MapView } from 'expo';
+import * as selectors from '../selectors';
+
+const styles = {
+  detailWrapper: {
+    marginTop: 10,
+    marginBottom: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  detailText: {
+    fontStyle: 'italic'
+  }
+};
 
 class ReviewScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -19,17 +35,64 @@ class ReviewScreen extends Component {
       headerStyle: {
         marginTop: Platform.OS === 'android' ? 24 : 0
       },
-      title: 'Review Jobs'
+      title: 'Review Jobs',
+      tabBarIcon({ tintColor }) {
+        return (
+          <Icon
+            color={tintColor}
+            name="favorite"
+            size={30}
+          />
+        );
+      }
     };
+  }
+
+  renderLikedJob = ({ company, url, jobkey, latitude, longitude, formattedRelativeTime, jobtitle }) => {
+    const initialRegion = {
+      latitude,
+      latitudeDelta: 0.045,
+      longitude,
+      longitudeDelta: 0.02
+    };
+
+    return (
+      <Card
+        key={jobkey}
+        title={jobtitle}
+      >
+        <View style={{ height: 200 }}>
+          <MapView
+            cacheEnabled={Platform.OS === 'android'}
+            initialRegion={initialRegion}
+            scrollEnabled={false}
+            style={{ flex: 1 }}
+          />
+          <View style={styles.detailWrapper}>
+            <Text style={styles.detailText}>{company}</Text>
+            <Text style={styles.detailText}>{formattedRelativeTime}</Text>
+          </View>
+          <Button
+            backgroundColor="#03A9F4"
+            onPress={() => { Linking.openURL(url) }}
+            title="Apply Now"
+          />
+        </View>
+      </Card>
+    );
   }
 
   render() {
     return (
-      <View>
-        <Text>Review Screen</Text>
-      </View>
+      <ScrollView>
+        {this.props.likedJobs.map(this.renderLikedJob)}
+      </ScrollView>
     );
   }
 }
 
-export default ReviewScreen;
+const mapStateToProps = createStructuredSelector({
+  likedJobs: selectors.getLikedJobs
+});
+
+export default connect(mapStateToProps)(ReviewScreen);

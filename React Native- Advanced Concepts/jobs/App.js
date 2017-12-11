@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert } from 'react-native';
 import { Provider } from 'react-redux';
 import { TabNavigator, StackNavigator } from 'react-navigation';
+import { Notifications } from 'expo';
+import { PersistGate } from 'redux-persist/lib/integration/react'
 
 import WelcomeScreen from './screens/WelcomeScreen';
 import AuthScreen from './screens/AuthScreen';
@@ -10,7 +12,9 @@ import DeckScreen from './screens/DeckScreen';
 import ReviewScreen from './screens/ReviewScreen';
 import SettingsScreen from './screens/SettingsScreen';
 
-import store from './store';
+import registerForPushNotifications from './services/push-notifications';
+
+import { persistor, store } from './store';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,13 +28,20 @@ const MainNavigator = TabNavigator({
   auth: { screen: AuthScreen },
   main: {
     screen: TabNavigator({
-      deck: { screen: DeckScreen },
       map: { screen: MapScreen },
+      deck: { screen: DeckScreen },
       review: {
         screen: StackNavigator({
           review: { screen: ReviewScreen },
           settings: { screen: SettingsScreen }
         })
+      }
+    }, {
+      tabBarPosition: 'bottom',
+      tabBarOptions: {
+        labelStyle: {
+          fontSize: 12
+        }
       }
     })
   }
@@ -42,12 +53,29 @@ const MainNavigator = TabNavigator({
 });
 
 class App extends Component {
+  componentDidMount() {
+    registerForPushNotifications();
+    Notifications.addListener(({ data: { text }, origin }) => {
+      console.log('text', text);
+      console.log('origin', origin);
+      if (origin === 'received' && text) {
+        Alert.alert(
+          'New Push Notification',
+          text,
+          [{ text: 'Ok.' }]
+        );
+      }
+    });
+  }
+
   render() {
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-          <MainNavigator />
-        </View>
+        <PersistGate persistor={persistor}>
+          <View style={styles.container}>
+            <MainNavigator />
+          </View>
+        </PersistGate>
       </Provider>
     );
   }

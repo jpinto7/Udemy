@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { View, Text, ActivityIndicator } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button, Icon } from 'react-native-elements';
 import { MapView } from 'expo';
 import * as reduxActions from '../actions';
 
@@ -20,6 +20,19 @@ const styles = {
 };
 
 class MapScreen extends Component {
+  static navigationOptions = {
+    title: 'Map',
+    tabBarIcon({ tintColor }) {
+      return (
+        <Icon
+          color={tintColor}
+          name="my-location"
+          size={30}
+        />
+      );
+    }
+  }
+
   state = {
     componentLoaded: false,
     region: {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { View, Text, Platform } from 'react-native';
 import { MapView } from 'expo';
-import { Card, Button } from 'react-native-elements';
+import { Card, Button, Icon } from 'react-native-elements';
 import Swipe from '../components/Swipe';
 import * as reduxActions from '../actions';
 import * as selectors from '../selectors';
@@ -22,10 +22,23 @@ const styles = {
 };
 
 class DeckScreen extends Component {
+  static navigationOptions = {
+    title: 'Jobs',
+    tabBarIcon({ tintColor }) {
+      return (
+        <Icon
+          color={tintColor}
+          name="description"
+          size={30}
+        />
+      );
+    }
+  }
+
   renderCard(job) {
     const initialRegion = {
       latitude: job.latitude,
-      latitudeDelte: 0.045,
+      latitudeDelta: 0.045,
       longitude: job.longitude,
       longitudeDelta: 0.02
     };
@@ -53,7 +66,14 @@ class DeckScreen extends Component {
   }
 
   renderNoMoreCards = () => (
-    <Card title="No more jobs">
+    <Card title="No More Jobs">
+      <Button
+        title="Back To Map"
+        large
+        icon={{ name: 'my-location' }}
+        backgroundColor="#03A9F4"
+        onPress={() => this.props.navigation.navigate('map')}
+      />
     </Card>
   )
 
