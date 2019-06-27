@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+  <title>First App</title>
+</head>
+<body>
+  <h1>Hello, this is the index page</h1>
+  <h2>Here are some access records</h2>
+  <div class="djangotwo">
+    {% if access_records %}
+      <table>
+        <thead>
+          <th>Site Name</th>
+          <th>Access Date</th>
+        </thead>
+        <tbody>
+          {% for acc in access_records %}
+            <tr>
+              <td>{{ acc.name }}</td>
+              <td>{{ acc.date }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No access records found!</p>
+    {% endif %}
+  </div>
+</body>
+</html>
