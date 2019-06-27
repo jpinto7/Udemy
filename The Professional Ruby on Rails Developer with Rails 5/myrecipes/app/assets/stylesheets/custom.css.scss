@@ -1,0 +1,199 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$color-primary-0: #4ABDAC;
+$color-primary-1: #EEAA7B;
+$color-primary-2: #F7B733;
+$color-primary-3: #DFDCE3;
+$color-font-default: #666;
+$color-font-hover: #222;
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: $color-font-default;
+  height: 100%;
+}
+
+.navbar-default {
+  background-color: $color-primary-2;
+  border: none;
+}
+
+.center {
+  text-align: center;
+}
+
+.jumbotron {
+  background-image: asset-url('food-2.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  color: $color-primary-0;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: $color-font-default;
+  text-decoration: none;
+}
+
+.jumbotron h1 {
+  color: $color-primary-0;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+.jumbotron h2 {
+  color: $color-primary-0;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+.btn-primary {
+    background: $color-primary-2;
+    border-color: $color-primary-2;
+    color: $color-font-default;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: $color-primary-1;
+    border-color: $color-primary-1;
+    color: #333;
+}
+
+.btn-xlarge {
+  background-color: $color-primary-2;
+}
+
+.btn-xlarge:hover {
+  color: $color-primary-2;
+  text-decoration: none;
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: $color-font-default;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+footer a {
+  color: $color-font-default;
+}
+
+footer a:hover {
+  color: $color-font-hover;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+
+.description {
+  margin-top: 0;
+}
+
+.well a {
+  color: $color-font-hover;
+}
+
+.chef_info {
+  margin-top: 10px;
+}
+
+.colormatch a {
+  color: $color-font-default;
+}
+
+.recipe-actions {
+  padding-top: 5px;
+  a {
+    color: #fff;
+  }
+}
+
+.listing {
+  list-style: none;
+  padding-left: 0;
+}
+
+.chef-title {
+  color: $color-font-default;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+.input_checkbox input {
+  width: auto !important;
+}
+
+.center-block {
+  float: none;
+}
+
+.chat-container {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 150px;
+  width: 80;
+}
+
+.message-container {
+  .form-control {
+    float: left;
+    width: 80%;
+  }
+  .btn {
+    float: right;
+    position: relative;
+    height: 54px !important;
+    width: 18%;
+  }
+}
+
+.message {
+  padding-left: 5px;
+  padding-top: 10px;
+}
+
+.messages {
+  border: 1px solid #eaeaea;
+  height: 16em;
+  position: relative;
+  overflow: auto;
+}
+
+.liking {
+  padding-right: 10px;
+}
+
+.small-image {
+  max-width: 25px;
+  height: auto;
+}
