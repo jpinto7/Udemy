@@ -33,7 +33,7 @@ var Todo = function (_React$Component) {
 		_this.handleSubmit = function (event) {
 			var id = _this.props.id || _this.state._id;
 			if (id == "" || id == undefined) {
-				fetch('http://localhost:3000/todos', {
+				fetch('/todos', {
 					method: 'post',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({
@@ -51,7 +51,7 @@ var Todo = function (_React$Component) {
 					console.log(error);
 				});
 			} else {
-				fetch('http://localhost:3000/todos/' + id, {
+				fetch('/todos/' + id, {
 					method: 'put',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({
@@ -131,7 +131,7 @@ var TodoList = function (_React$Component2) {
 		value: function componentDidMount() {
 			var _this3 = this;
 
-			fetch('http://localhost:3000/todos').then(function (response) {
+			fetch('/todos').then(function (response) {
 				return response.json();
 			}).then(function (_ref2) {
 				var todos = _ref2.todos;

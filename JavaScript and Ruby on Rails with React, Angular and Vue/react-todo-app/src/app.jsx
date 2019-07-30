@@ -14,13 +14,45 @@ class Todo extends React.Component {
 
     this.setState({
       [name]: value
-    }, () => {
-			this.handleSubmit();
+    }, event => {
+			if (target.type === 'checkbox') {
+				this.handleSubmit(event);
+			}
 		});
   }
 
-	handleSubmit = () => {
-		console.log('Submitting..', this.state);
+	handleSubmit = event => {
+		const id = this.props.id || this.state._id;
+		if (id == "" || id == undefined) {
+			fetch('http://localhost:3000/todos', {
+				method: 'post',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					text: this.state.todoText,
+					done: this.state.isDone
+				})
+			})
+				.then(response => response.json())
+				.then(({ todo }) => {
+					console.log('todo', todo);
+					this.setState({ _id: todo._id });
+				})
+				.catch(error => {
+					console.log(error);
+				});
+		} else {
+			fetch(`http://localhost:3000/todos/${id}`, {
+				method: 'put',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					text: this.state.todoText,
+					done: this.state.isDone
+				})
+			})
+				.catch(error => {
+					console.log(error);
+				});
+		}
 	}
 
 	render() {
@@ -31,7 +63,7 @@ class Todo extends React.Component {
 					<input name="isDone"
 						type="checkbox"
 						checked={isDone}
-						onChange={this.handleInputChange} />
+						onClick={this.handleInputChange} />
 					<input
 						name="todoText"
 						type="text"
@@ -49,13 +81,21 @@ class TodoList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			todos: [
-				{id: 1, text: "Item 1", done: false},
-				{id: 2, text: "Item 2", done: false},
-				{id: 3, text: "Item 3", done: false},
-				{id: 4, text: "Item 4", done: false}
-			]
+			todos: []
 		};
+	}
+
+	componentDidMount() {
+		fetch('http://localhost:3000/todos')
+			.then(response => response.json())
+			.then(({ todos }) => {
+				this.setState({
+					todos
+				});
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
 
 	newTodo = e => {
@@ -69,7 +109,12 @@ class TodoList extends React.Component {
 
 	render() {
 		const todoList = this.state.todos.map(todo => (
-			<Todo key={todo.id.toString()} {...todo} />
+			<Todo
+				id={todo._id}
+				key={todo._id}
+				checked={todo.done}
+				text={todo.text}
+			/>
 		));
 
 		return (
