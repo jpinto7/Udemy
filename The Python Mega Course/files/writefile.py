@@ -1,0 +1,6 @@
+file = open('writexample.txt', 'w')
+file.write('Line 1\n')
+file.close()
+file = open('writexample.txt', 'a')
+file.write('Line 2\n')
+file.close()
