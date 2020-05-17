@@ -1,0 +1,141 @@
+{
+  "swagger": "2.0",
+  "title": "Music API Documentation",
+  "description": "MUSIC API course for egghead",
+  "version": "1.0.0",
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Songs",
+      "description": "API for Songs endpoints"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/songs": {
+      "post": {
+        "tags": ["Songs"],
+        "summary": "API endpoint for create Song",
+        "description": "Create a Song in the database",
+        "parameters": [
+          {
+            "name": "song",
+            "description": "Song params to create a new song",
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/Song"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New song created",
+            "schema": {
+              "$ref": "#definitions/Song"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Songs"],
+        "summary": "API endpoint for finding all Song",
+        "description": "Find all Song from the database",
+        "parameters": [
+          {
+            "name": "page",
+            "type": "integer",
+            "description": "Define the page index for the records",
+            "in": "query"
+          },
+          {
+            "name": "perPage",
+            "type": "integer",
+            "description": "Define the limit for the records",
+            "in": "query"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "All the songs",
+            "schema": {
+              "$ref": "#definitions/Song"
+            }
+          }
+        }      
+      }
+    },
+    "/songs/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": "true",
+          "description": "id of the song",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Songs"],
+        "summary": "API endpoint for finding single Song",
+        "description": "Find Song from the database",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Song has found",
+            "schema": {
+              "$ref": "#definitions/Song"
+            }
+          }
+        }      
+      }
+    }
+  },
+  "definitions": {
+    "Song": {
+      "required": ["title", "url"],
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "integer",
+          "format": "Int32"
+        }
+      }
+    },
+    "Songs": {
+      "properties": {
+        "docs": {
+          "type": "array",
+          "items": {
+            "$ref": "#definitions/Song"
+          }
+        },
+        "total": {
+          "type": "integer"
+        },
+        "pages": {
+          "type": "integer"
+        },
+        "limit": {
+          "type": "integer"
+        },
+        "page": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
