@@ -1,4 +1,17 @@
 {
   "name": "ChatApp",
-  "displayName": "ChatApp"
+  "displayName": "ChatApp",
+  "expo": {
+    "name": "ChatApp",
+    "slug": "ChatApp",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
 }

@@ -16,31 +16,28 @@ const ChatFlow = () => {
         <Stack.Screen
           name="SignIn"
           component={SignIn}
-          options={{ headerShow: false }}
-        />
-        <Stack.Screen
-          name="SignIn"
-          component={SignIn}
-          options={{ headerShow: false }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Groups Screen"
-          component={SignIn}
-          options={{ headerShow: false }}
+          component={Groups}
+          options={{ title: 'Groups' }}
         />
         <Stack.Screen
           name="Add Group Screen"
-          component={SignIn}
-          options={{ headerShow: false }}
+          component={AddGroup}
+          options={{ title: 'Add Group' }}
         />
         <Stack.Screen
           name="Chat Screen"
-          component={SignIn}
-          options={{ headerShow: false }}
+          component={Chat}
+          options={{ title: 'Chats' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default ChatFlow;
+const MainStackNavigator = () => ChatFlow();
+
+export default MainStackNavigator;
