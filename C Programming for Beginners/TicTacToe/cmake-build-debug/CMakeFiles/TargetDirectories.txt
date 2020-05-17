@@ -1,0 +1,3 @@
+/Users/juanpablo/Documents/Udemy/C Programming for Beginners/tictactoe/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/juanpablo/Documents/Udemy/C Programming for Beginners/tictactoe/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/juanpablo/Documents/Udemy/C Programming for Beginners/tictactoe/cmake-build-debug/CMakeFiles/TicTacToe.dir
