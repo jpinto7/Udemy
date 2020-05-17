@@ -10,14 +10,14 @@ const BuildControl = props => {
 			<div className={styles.Label}>{props.label}</div>
 			<button
 				className={styles.Less}
-				onClick={controlsContext.removeIngredient(props.type)}
+				onClick={() => { controlsContext.removeIngredient(props.type) }}
 				disabled={controlsContext.disabledInfo[props.type]}
 			>
 				Less
 			</button>
 			<button
 				className={styles.More}
-				onClick={controlsContext.addIngredient(props.type)}
+				onClick={() => { controlsContext.addIngredient(props.type) }}
 			>
 				More
 			</button>

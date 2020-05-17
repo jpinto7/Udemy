@@ -2,22 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 
-const Button = props => (
+const Button = ({ children, clicked, btnStyle, ...otherProps }) => (
   <button
-    className={[styles.Button, styles[props.btnStyle]].join(' ')}
-    onClick={props.clicked}
+    className={[styles.Button, styles[btnStyle]].join(' ')}
+    onClick={clicked}
+    {...otherProps}
   >
-    {props.children}
+    {children}
   </button>
 );
 
 Button.propTypes = {
   clicked: PropTypes.func,
-  btnStyle: PropTypes.string
+  btnStyle: PropTypes.string,
 };
 
 Button.defaultProps = {
-  btnStyle: 'Success'
+  btnStyle: 'Success',
 };
 
 export default Button;
