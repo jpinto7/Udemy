@@ -1,0 +1,4 @@
+([('frontend',
+   '/Users/juanpablo/Documents/Udemy/The Python Mega '
+   'Course/tkinter_sqlite3/dist/frontend',
+   'EXECUTABLE')],)

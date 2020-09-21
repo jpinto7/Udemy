@@ -9,4 +9,5 @@ songRouter.route('/')
 
 songRouter.route('/:id')
   .get(songController.findOne)
-  .delete(songController.delete);
+  .delete(songController.delete)
+  .put(songController.update);

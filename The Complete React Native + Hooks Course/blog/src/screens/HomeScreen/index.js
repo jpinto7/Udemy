@@ -1,29 +1,60 @@
-import React, { useContext } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import React, { useContext, useLayoutEffect, useEffect } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { Context as BlogContext } from '../../context/BlogContext';
 
 const HomeScreen = ({ navigation }) => {
-  const { state, deleteBlogPost } = useContext(BlogContext);
+  const { state, deleteBlogPost, getBlogPosts } = useContext(BlogContext);
 
-  const handleOnPressTrash = id => () => {
+  useEffect(() => {
+    getBlogPosts();
+    const unsubscribe = navigation.addListener('focus', () => {
+      getBlogPosts();
+    });
+
+    return unsubscribe;
+  }, []);
+
+  const handleOnPressTrash = (id) => () => {
     deleteBlogPost(id);
   };
 
-  const handleOnPressPost = id => () => {
+  const handleOnPressPost = (id) => () => {
     navigation.navigate('Show', { id });
   };
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Create');
+          }}
+        >
+          <Feather name="plus" size={30} />
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation]);
 
   return (
     <View>
       <FlatList
         data={state}
-        keyExtractor={blogPost => `${blogPost.id}`}
-        renderItem={({ item:blog }) => {
+        keyExtractor={(blogPost) => `${blogPost.id}`}
+        renderItem={({ item: blog }) => {
           return (
             <TouchableOpacity onPress={handleOnPressPost(blog.id)}>
               <View style={styles.row}>
-                <Text style={styles.title}>{blog.title} - {blog.id}</Text>
+                <Text style={styles.title}>
+                  {blog.title} - {blog.id}
+                </Text>
                 <TouchableOpacity onPress={handleOnPressTrash(blog.id)}>
                   <Feather style={styles.icon} name="trash" />
                 </TouchableOpacity>
@@ -33,21 +64,7 @@ const HomeScreen = ({ navigation }) => {
         }}
       />
     </View>
-  )
-};
-
-HomeScreen.navigationOptions = ({ navigation }) => {
-  const handleOnPressPlus = () => {
-    navigation.navigate('Create');
-  };
-
-  return {
-    headerRight: (
-      <TouchableOpacity onPress={handleOnPressPlus}>
-        <Feather name="plus" size={30} />
-      </TouchableOpacity>
-    )
-  };
+  );
 };
 
 const styles = StyleSheet.create({
@@ -57,14 +74,14 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 10,
     borderTopWidth: 1,
-    borderColor: 'gray'
+    borderColor: 'gray',
   },
   title: {
-    fontSize: 18
+    fontSize: 18,
   },
   icon: {
-    fontSize: 24
-  }
+    fontSize: 24,
+  },
 });
 
 export default HomeScreen;

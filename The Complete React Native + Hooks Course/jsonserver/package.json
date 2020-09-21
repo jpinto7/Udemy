@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run db & npm run tunnel",
     "db": "json-server -w db.json",
     "tunnel": "ngrok http 3000"
   },

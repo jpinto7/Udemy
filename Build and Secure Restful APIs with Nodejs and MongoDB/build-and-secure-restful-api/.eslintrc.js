@@ -2,33 +2,19 @@ module.exports = {
   extends: ['airbnb-base', 'plugin:prettier/recommended'],
   plugins: ['prettier'],
   env: {
-    node: true
+    node: true,
   },
   rules: {
     env: {
-      node: true
+      node: true,
     },
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true
-      }
-    ],
-    quotes: [
-      2,
-      'single',
-      {
-        avoidEscape: true,
-        allowTemplateLiterals: true
-      }
-    ],
     'prettier/prettier': [
       'error',
       {
         trailingComma: 'es5',
         singleQuote: true,
-        printWidth: 120
-      }
+        printWidth: 120,
+      },
     ],
     'no-console': 0,
     'import/prefer-default-export': 0,
@@ -44,21 +30,21 @@ module.exports = {
     'no-unused-vars': [
       1,
       {
-        argsIgnorePattern: 'res|next|^err'
-      }
+        argsIgnorePattern: 'res|next|^err',
+      },
     ],
     'arrow-body-style': [2, 'as-needed'],
     'no-unused-expressions': [
       2,
       {
-        allowTaggedTemplates: true
-      }
+        allowTaggedTemplates: true,
+      },
     ],
     'no-param-reassign': [
       2,
       {
-        props: false
-      }
-    ]
-  }
+        props: false,
+      },
+    ],
+  },
 };

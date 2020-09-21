@@ -1,5 +1,4 @@
 {
-  "emmet.includeLanguages": {
-     "javascript": "javascriptreact"
-  }
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true
 }

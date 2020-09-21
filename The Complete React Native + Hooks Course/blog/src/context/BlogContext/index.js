@@ -3,43 +3,57 @@ import jsonServer from '../../api/jsonServer';
 
 const initialContext = {
   data: [],
-  addBlogPost: () => {}
+  addBlogPost: () => {},
 };
 
 const initialState = [];
 
 const reducer = (state, { type, payload }) => {
   switch (type) {
-    case 'ADD_BLOGPOST':
-      return [...state, { id: Math.floor(Math.random() * 9999), title: payload.title, content: payload.content }];
+    case 'GET_BLOGPOSTS':
+      return payload;
     case 'EDIT_BLOGPOST':
-      return state.map(post => post.id === payload.id ? payload : post);
+      return state.map((post) => (post.id === payload.id ? payload : post));
     case 'DELETE_BLOGPOST':
-      return state.filter(blogPost => blogPost.id !== payload);
+      return state.filter((blogPost) => blogPost.id !== payload);
     default:
       return state;
   }
 };
 
 const actions = {
-  getBlogPosts: dispatch => () => {
-
+  getBlogPosts: (dispatch) => async () => {
+    const response = await jsonServer.get('/blogposts');
+    dispatch({ type: 'GET_BLOGPOSTS', payload: response.data });
   },
-  addBlogPost: dispatch => (title, content, callback) => {
-    dispatch({ type: 'ADD_BLOGPOST', payload: { title, content }});
+  addBlogPost: (dispatch) => async (title, content, callback) => {
+    await jsonServer.post('/blogposts', {
+      title,
+      content,
+    });
     if (callback) {
       callback();
     }
   },
-  editBlogPost: dispatch => (id, title, content, callback) => {
-    dispatch({ type: 'EDIT_BLOGPOST', payload: { id, title, content }});
+  editBlogPost: (dispatch) => async (id, title, content, callback) => {
+    await jsonServer.put(`/blogposts/${id}`, {
+      title,
+      content,
+    });
+    dispatch({ type: 'EDIT_BLOGPOST', payload: { id, title, content } });
     if (callback) {
       callback();
     }
   },
-  deleteBlogPost: dispatch => id => {
+  deleteBlogPost: (dispatch) => async (id) => {
+    await jsonServer.delete(`/blogposts/${id}`);
     dispatch({ type: 'DELETE_BLOGPOST', payload: id });
   },
 };
 
-export const { Context, Provider } = createDataContext(reducer, actions, initialState, initialContext);
+export const { Context, Provider } = createDataContext(
+  reducer,
+  actions,
+  initialState,
+  initialContext
+);
