@@ -1,0 +1,15 @@
+bz2file==0.98
+cython==0.29.*
+numpy==1.16.*
+jupyter==1.0.*
+matplotlib==3.1.*
+scikit-learn==0.21.*
+scipy==1.2.*
+pandas==0.24.*
+pillow==6.1.*
+seaborn==0.9.*
+h5py==2.9.*
+pytest==5.0.*
+twisted==19.2.*
+tensorflow==1.13.*
+keras==2.2.*
