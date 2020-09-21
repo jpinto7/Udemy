@@ -1,9 +1,16 @@
-//
-//  Enemy.swift
-//  ClassesDemo
-//
-//  Created by Juan Pablo Pinto on 8/2/20.
-//  Copyright © 2020 Juan Pablo Pinto. All rights reserved.
-//
-
-import Foundation
+class Enemy {
+    var health = 100
+    var attackStrength = 10
+    
+    init() {
+        
+    }
+    
+    func move() {
+        print("Move")
+    }
+    
+    func attack() {
+        print("Attack")
+    }
+}
