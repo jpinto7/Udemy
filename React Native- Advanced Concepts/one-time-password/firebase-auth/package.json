@@ -6,7 +6,7 @@
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
-    "axios": "0.16.2",
+    "axios": "0.21.1",
     "expo": "^20.0.0",
     "firebase": "^4.4.0",
     "react": "16.0.0-alpha.12",
