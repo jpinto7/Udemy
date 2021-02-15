@@ -37,7 +37,7 @@
     "babel-preset-stage-1": "^6.1.18",
     "bootstrap": "^4.0.0-alpha.6",
     "immutability-helper": "^2.2.0",
-    "lodash": "^3.10.1",
+    "lodash": "^4.17.20",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "react-redux": "5.0.4",
