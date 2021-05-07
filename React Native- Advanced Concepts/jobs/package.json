@@ -5,7 +5,7 @@
     "axios": "^0.17.1",
     "expo": "^23.0.0",
     "latlng-to-zip": "0.0.1",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "qs": "^6.5.1",
     "react": "16.0.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-23.0.0.tar.gz",
